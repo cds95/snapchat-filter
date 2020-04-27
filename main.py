@@ -6,12 +6,14 @@ rainbow_filterer = rainbow_filter.RainbowFilter()
 sunglasses_filterer = sunglasses_filter.SunglassesFilter()
 dog_filterer = dog_filter.DogFilter()
 
+filters = [dog_filterer, sunglasses_filterer, rainbow_filterer] # Add filters to list to apply them
+
 while(True):
     ret, frame = vc.read()
     try:
-        filtered_img = dog_filterer.apply(frame)
-        filtered_img = rainbow_filterer.apply(filtered_img)
-        filtered_img = sunglasses_filterer.apply(filtered_img)
+        filtered_img = frame
+        for sp_filter in filters:
+            filtered_img = sp_filter.apply(filtered_img)
         cv2.imshow('frame', filtered_img)
     except:
         print("Failed to filter")

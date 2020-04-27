@@ -5,7 +5,7 @@ from pixel_point import PixelPoint
 
 RAINBOW_FILTER_SCALE = 4  # Mouth only take up about a quarter of the image
 RAINBOW_X_OFFSET = 0 / 400
-RAINBOW_Y_OFFSET = 0 / 400
+RAINBOW_Y_OFFSET = 20 / 400
 RAINBOW_HEIGHT = 130
 
 
@@ -52,7 +52,7 @@ class RainbowFilter(BaseFilter):
             for col in range(0, rainbow_filter.shape[1]):
                 for channel in range(0, rainbow_filter.shape[2]):
                     if rainbow_filter[row][col][channel] > 0:
-                        img_col = int(col + mouth_right_x + face_x) - int(rainbow_filter.shape[0] * RAINBOW_X_OFFSET) - 120
+                        img_col = int(col + mouth_right_x + face_x) - int(rainbow_filter.shape[0] * RAINBOW_X_OFFSET) - 150
                         img_row = int(row + lip_top_y + face_y) - int(rainbow_filter.shape[1] * RAINBOW_Y_OFFSET)
                         res[img_row][img_col][channel] = rainbow_filter[row][col][channel]
         return res
